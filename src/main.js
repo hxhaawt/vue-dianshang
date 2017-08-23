@@ -8,6 +8,8 @@ import router from './router'
 
 // 导入自己的组件
 import Layout from './components/layout.vue';
+// 数据处理中心
+import store from './store'
 
 // 注册组件
 Vue.use(Vuex);
@@ -19,6 +21,7 @@ Vue.config.productionTip = false;
 new Vue({
     el: '#app',
     router,
+    store,
     template: '<Layout/>',
     components: { Layout }
 })

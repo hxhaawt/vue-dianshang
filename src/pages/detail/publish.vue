@@ -20,6 +20,7 @@
                 <div class="sales-board-line-right">
                     <v-selection :selections="tradeList"></v-selection>
                 </div>
+
             </div>
             <div class="sales-board-line">
                 <div class="sales-board-line-left">

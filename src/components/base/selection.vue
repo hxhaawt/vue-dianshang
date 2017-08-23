@@ -2,7 +2,7 @@
     <div class="selection-component">
         <div class="selection-show" @click="toggleDrop">
             <span>{{ selections[nowIndex].label }}</span>
-            <div class="arrow"></div>
+            <div :class="['arrow', {arrow1: isDrop}]"></div>
         </div>
         <div class="selection-list" v-if="isDrop">
             <ul>
@@ -47,7 +47,9 @@
                 // 主要是解决点击当前下拉菜单，
                 // 其他所有监听有 reset-component 事件
                 // 的组件会先执行监听函数，然后再执行下面的程序
-                eventBus.$emit('reset-component');
+               if ( !this.isDrop ) {
+                   eventBus.$emit('reset-component');
+               }
         
                 this.isDrop = !this.isDrop
             },
@@ -87,6 +89,13 @@
         margin-left: 6px;
         margin-right: -14px;
         vertical-align: middle;
+    }
+    .selection-show .arrow1 {
+
+        border-top: 0;
+        border-bottom: 5px solid #e3e3e3;
+
+        margin-top: -3px;
     }
     .selection-list {
         display: inline-block;
