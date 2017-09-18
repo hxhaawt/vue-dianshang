@@ -18,7 +18,8 @@
                     产品类型：
                 </div>
                 <div class="sales-board-line-right">
-                    <v-selection :selections="buyTypes" @on-change="onParamChange('buyType', $event)"></v-selection>
+                    <v-selection :selections="buyTypes"
+                    @on-change="onParamChange('buyType', $event)"></v-selection>
                 </div>
             </div>
             <div class="sales-board-line">
@@ -61,7 +62,7 @@
         <div class="sales-board-des">
             <h2>产品说明</h2>
             <p>网站访问统计分析报告的基础数据源于网站流量统计信息，但其价值远高于原始数据资料。专业的网站访问统计分析报告对网络营销的价值，正如专业的财务分析报告对企业经营策略的价值。</p>
-            
+
             <h3>用户行为指标</h3>
             <ul>
                 <li>用户行为指标主要反映用户是如何来到网站的、在网站上停留了多长时间、访问了哪些页面等，主要的统计指标包括：</li>
@@ -70,7 +71,7 @@
                 <li>用户所使用的搜索引擎及其关键词；</li>
                 <li>在不同时段的用户访问量情况等。</li>
             </ul>
-            
+
             <h3>浏览网站方式</h3>
             <ul>
                 <li>用户上网设备类型</li>
@@ -94,7 +95,11 @@
                     <td>{{ buyType.label }}</td>
                     <td>{{ period.label }}</td>
                     <td>
-                        <span v-for="item in versions">{{ item.label }}</span>
+                        <span v-for="(item, index) in versions"
+                            :key="index"
+                        >
+                            {{ item.label }}
+                        </span>
                     </td>
                     <td>{{ price }}</td>
                 </tr>
@@ -111,7 +116,7 @@
         <check-order :is-show-check-dialog="isShowCheckOrder"
                      :order-id="orderId"
                      @on-close-check-dialog="hideCheckOrder">
-            
+
         </check-order>
     </div>
 </template>
@@ -126,7 +131,7 @@
     import Dialog from '../../components/base/dialog'
 
     import _ from 'lodash'
-    
+
     export default {
         components: {
             VSelection,
@@ -202,7 +207,7 @@
                 let buyVersionsArray = _.map(this.versions, (item) => {
                     return item.value
                 });
-                
+
                 let reqParams = {
                     buyNumber: this.buyNum,
                     buyType: this.buyType.value,
@@ -251,7 +256,7 @@
                     })
             }
         },
-        
+
         // 组件加载完成，先计算一次价格的默认值
         mounted () {
             this.buyNum = 1
@@ -265,26 +270,5 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    .buy-dialog-title {
-        font-size: 16px;
-        font-weight: bold;
-    }
-    .buy-dialog-btn {
-        margin-top: 20px;
-    }
-    .buy-dialog-table {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    .buy-dialog-table td,
-    .buy-dialog-table th{
-        border: 1px solid #e3e3e3;
-        text-align: center;
-        padding: 5px 0;
-    }
-    .buy-dialog-table th {
-        background: #4fc08d;
-        color: #fff;
-        border: 1px solid #4fc08d;
-    }
+
 </style>

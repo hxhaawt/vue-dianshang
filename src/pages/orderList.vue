@@ -6,17 +6,17 @@
                 选择产品：
                 <v-selection :selections="products" @on-change="productChange"></v-selection>
             </div>
-            
+
             <div class="order-list-option">
                 开始日期：
                 <v-date-picker @on-change="getStartDate"></v-date-picker>
             </div>
-            
+
             <div class="order-list-option">
                 结束日期：
                 <v-date-picker @on-change="getEndDate"></v-date-picker>
             </div>
-            
+
             <div class="order-list-option">
                 关键词：
                 <input type="text" v-model.lazy="query" class="order-query">
@@ -25,13 +25,16 @@
         <div class="order-list-table">
             <table>
                 <tr>
-                    <th v-for="head in tableHeads"
+                    <th v-for="(head, index) in tableHeads"
                         @click="changeOrderType(head)"
+                        :key="index"
                         :class="{active:head.active}">{{ head.label }}
                     </th>
                 </tr>
                 <tr v-for="item in tableData" :key="item.period">
-                    <td v-for="head in tableHeads">{{ item[head.key] }}</td>
+                    <td v-for="(head, index) in tableHeads" :key="index">
+                        {{ item[head.key] }}
+                    </td>
                 </tr>
             </table>
         </div>
@@ -125,21 +128,21 @@
 //                this.getList()
 //            },
             productChange (obj) {
-        
+
                 this.$store.commit('updateParams', {
                     key: "productId",
                     val: obj.value
                 });
-        
+
                 this.$store.dispatch('fetchOrderList')
             },
             getStartDate (date) {
-        
+
                 this.$store.commit('updateParams', {
                     key: "startDate",
                     val: date
                 } );
-        
+
                 this.$store.dispatch('fetchOrderList')
             },
             getEndDate (date) {
@@ -147,7 +150,7 @@
                     key: "endDate",
                     val: date
                 } );
-        
+
                 this.$store.dispatch('fetchOrderList')
             },
             getList () {
@@ -161,7 +164,7 @@
                     .then((res) => {
                         this.tableData = res.data.list
                     }, (err) => {
-                    
+
                     })
             },
             changeOrderType (headItem) {

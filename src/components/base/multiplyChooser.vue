@@ -4,6 +4,7 @@
             <li
                 v-for="(item, index) in selections"
                 @click="toggleSelection(index)"
+                :key="index"
                 :title="item.label"
                 :class="{active: checkActive(index)}"
             >{{ item.label }}</li>

@@ -10,7 +10,10 @@
                     产品类型：
                 </div>
                 <div class="sales-board-line-right">
-                    <v-chooser :selections="buyTypes"></v-chooser>
+                    <v-chooser :selections="buyTypes"
+                        @on-change="onParamChange('productType', $event)"
+                    >
+                    </v-chooser>
                 </div>
             </div>
             <div class="sales-board-line">
@@ -18,7 +21,9 @@
                     适用地区：
                 </div>
                 <div class="sales-board-line-right">
-                    <v-selection :selections="districts"></v-selection>
+                    <v-selection :selections="districts"
+                        @on-change="onParamChange('region', $event)">
+                    </v-selection>
                 </div>
             </div>
             <div class="sales-board-line">
@@ -49,7 +54,7 @@
         <div class="sales-board-des">
             <h2>产品说明</h2>
             <p>历史资料、科学实验、检验、统计等所获得的和用于科学研究、技术设计、查证、决策等的数值加以统计为解决方案做前期准备。</p>
-            
+
             <table class="sales-board-table">
                 <tbody>
                 <tr class="ui-table-row">
@@ -240,7 +245,7 @@
                 </tbody>
             </table>
         </div>
-        
+
         <!-- 购买弹框，默认隐藏，点击 立即购买 时弹出 -->
         <my-dialog :is-show="isShowPayDialog" @on-close="hidePayDialog">
             <table class="buy-dialog-table">
@@ -266,10 +271,11 @@
         <my-dialog :is-show="isShowErrDialog" @on-close="hideErrDialog">
             支付失败！
         </my-dialog>
+        <!-- 等待付款窗口 -->
         <check-order :is-show-check-dialog="isShowCheckOrder"
                      :order-id="orderId"
                      @on-close-check-dialog="hideCheckOrder">
-    
+
         </check-order>
     </div>
 </template>
@@ -281,7 +287,7 @@
     import BankChooser from '../../components/bankChooser'
     import CheckOrder from '../../components/checkOrder'
     import Dialog from '../../components/base/dialog'
-    
+
     export default {
         components: {
             VChooser,
@@ -299,7 +305,7 @@
                 productType: {},    // 产品类型
                 region: {},     // 适用地区
                 validTime: '半年',  // 有效时间
-                totalPrice: '500',     // 总价
+                // totalPrice: '500',     // 总价
                 orderId: '',        // 后台 返回的购买id
                 buyTypes: [
                     {
@@ -343,13 +349,19 @@
                 ]
             }
         },
+        computed: {
+            // 总价
+            totalPrice()  {
+                return 500 + this.productType.value * 50 + this.region.value * 20;
+            }
+        },
         mounted () {
             this.productType =  this.buyTypes[0];
             this.region =  this.districts[0];
         },
-        
+
         methods: {
-            
+
             // 显示购买信息 弹窗
             showPayDialog() {
                 this.isShowPayDialog = true;
@@ -371,10 +383,15 @@
             hideErrDialog () {
                 this.isShowErrDialog = false
             },
-    
+
+            // 点击--更新当前需要的 地域、产品类型
+            onParamChange(attr, value) {
+                this[attr] = value;
+            },
+
             // 处理点击 确认购买 按钮
             confirmBuy () {
-                
+
                 // 提交数据给后端
                 let reqParams = {
                     // 只是 测试数据
@@ -402,6 +419,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/*
     .buy-dialog-btn {
         margin-top: 20px;
     }
@@ -424,4 +442,5 @@
         color: #fff;
         border: 1px solid #4fc08d;
     }
+    */
 </style>

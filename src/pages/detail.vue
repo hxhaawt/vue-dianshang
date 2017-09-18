@@ -4,8 +4,10 @@
             <div class="product-board">
                 <img :src="productIcon">
                 <ul>
-                    <router-link v-for="item in products" :to="{ path: item.path }"
-                                 tag="li" active-class="active"
+                    <router-link v-for="(item, index) in products"
+                        :to="{ path: item.path }"
+                        tag="li" active-class="active"
+                        :key="index"
                     >
                         {{ item.name }}
                     </router-link>
@@ -104,7 +106,7 @@
         background: #fff;
     }
     .sales-board-form {
-    
+
     }
     .sales-board-intro h2 {
         font-size: 20px;
@@ -163,4 +165,30 @@
         border: 1px solid #f0f2f5;
         padding: 15px;
     }
+
+    /* ===============购买弹窗全局样式=========== */
+    .buy-dialog-title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .buy-dialog-btn {
+        margin-top: 20px;
+    }
+    .buy-dialog-table {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .buy-dialog-table td,
+    .buy-dialog-table th{
+        border: 1px solid #e3e3e3;
+        text-align: center;
+        padding: 5px 0;
+    }
+    .buy-dialog-table th {
+        background: #4fc08d;
+        color: #fff;
+        border: 1px solid #4fc08d;
+    }
+    /* ===============购买弹窗全局样式 -- end --=========== */
+
 </style>

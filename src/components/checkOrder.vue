@@ -12,7 +12,7 @@
         <this-dialog :is-show="isShowSuccessDialog" @on-close="toOrderList">
             购买成功！
         </this-dialog>
-        <this-dialog :is-show="isShowFailDialog" @on-close="toOrderList">
+        <this-dialog :is-show="isShowFailDialog" @on-close="closeFailDialog">
             购买失败！
         </this-dialog>
     </div>
@@ -61,6 +61,9 @@
             },
             toOrderList () {
                 this.$router.push({path: '/orderList'});
+            },
+            closeFailDialog() {
+                this.isShowFailDialog = false;
             }
         }
     }

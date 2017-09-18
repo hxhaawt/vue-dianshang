@@ -4,6 +4,7 @@
             <li
                 v-for="(item, index) in banks"
                 @click="chooseSelection(index)"
+                :key="index"
                 :title="item.label"
                 :class="[item.name, {active: index === nowIndex}]"
             ></li>
@@ -82,11 +83,11 @@
         display: inline-block;
         width: 117px;
         height: 32px;
-        
+
         background-image: url(../assets/banks/banks.png) ;
         background-repeat: no-repeat;
         /*background: url(../assets/banks/banks.png) no-repeat;*/
-        
+
         margin: 5px;
         border: 1px solid #e3e3e3;
         cursor: pointer;
@@ -148,7 +149,7 @@
     .snongshang {
         background-position: -2880px 0;
     }
-    
+
     .baifubao {
         background-position: -1320px 0;
     }

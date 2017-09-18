@@ -1,4 +1,5 @@
 <template>
+    <!-- 这是广告显示组件 -->
     <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
         <div class="slide-img">
             <a :href="slides[nowIndex].href">
@@ -15,6 +16,7 @@
             <li @click="goto(prevIndex)">&lt;</li>
             <li v-for="(item, index) in slides"
                 @click="goto(index)"
+                :key="index"
             >
                 <a :class="{on: index === nowIndex}">{{ index + 1 }}</a>
             </li>
@@ -24,7 +26,7 @@
 </template>
 
 <script>
-    
+
     // 这是幻灯片 模块
     export default {
         props: {
