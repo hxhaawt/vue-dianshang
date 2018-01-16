@@ -98,6 +98,7 @@
         transition: all .5s;
         transform: translateX(-900px);
     }
+    
     .slide-show {
         position: relative;
         margin: 15px 15px 15px 0;

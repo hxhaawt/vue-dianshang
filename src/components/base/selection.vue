@@ -17,6 +17,7 @@
 
 <script>
     import { eventBus } from '../../eventBus'
+    // 下拉选择框
     export default {
         props: {
             selections: {

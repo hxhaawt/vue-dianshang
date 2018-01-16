@@ -16,7 +16,7 @@
 <script>
     // 这是一个弹窗模块，
     // 如在主页中 点击注册或者登录或者关于等时候弹出
-    
+
     export default {
         props: {
             isShow: {
@@ -26,7 +26,7 @@
         },
         data () {
             return {
-            
+
             }
         },
         methods: {
@@ -38,19 +38,27 @@
 </script>
 
 <style scoped>
-    .drop-enter-active {
-        transition: all .5s ease;
-    }
-    .drop-leave-active {
-        transition: all .3s ease;
-    }
+    /* 在元素插入前应用，1秒后删除。（开始于进入状态） */
     .drop-enter {
         transform: translateY(-500px);
     }
+    /* 在元素插入前应用，当transition/animation结束时移除 */
+    .drop-enter-active {
+        transition: all .5s ease;
+    }
+
+    /* 当离开的transition触发时正确应用，一秒后删除。（开始于离开状态） */
+    /* .drop-leave {
+
+    } */
+    /* 当离开的transition触发时正确应用，当transition/animation结束时移除。 */
+    .drop-leave-active {
+        transition: all .3s ease;
+    }
     .drop-leave-active {
         transform: translateY(-500px);
     }
-    
+
     .dialog-wrap {
         position: fixed;
         width: 100%;
@@ -65,7 +73,7 @@
         left: 0;
         /*bottom: 0;*/
         /*right: 0;*/
-        
+
         width: 100%;
         height: 100%;
     }

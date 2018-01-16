@@ -9,7 +9,7 @@
                         tag="li" active-class="active"
                         :key="index"
                     >
-                        {{ item.name }}
+                        {{item.name}}
                     </router-link>
                 </ul>
             </div>
@@ -104,9 +104,6 @@
     }
     .sales-board {
         background: #fff;
-    }
-    .sales-board-form {
-
     }
     .sales-board-intro h2 {
         font-size: 20px;

@@ -25,7 +25,7 @@
             </keep-alive>
         </div>
         <div class="app-foot">
-            <p>© 2016 fishenal MIT</p>
+            <p>© 2017 vue-ds MIT</p>
         </div>
         <my-dialog :is-show="isShowLogDialog" @on-close="closeDialog('isShowLogDialog')">
             <log-form @has-log="onSuccessLog"></log-form>
@@ -73,6 +73,9 @@
             },
             closeDialog (attr) {
                 this[attr] = false
+            },
+            quit () {
+                this.username = "";
             },
             onSuccessLog (data) {
                 console.log(data);
@@ -146,6 +149,7 @@
         font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
         font-size: 14px;
         color: #444;
+        min-width:1200px
     }
     .app-head {
         background: #363636;

@@ -29,6 +29,7 @@
         },
         data () {
             return {
+                // 存的是下标
                 nowIndexes: [0]
             }
         },
@@ -42,6 +43,7 @@
                         return idx !== index
                     })
                 }
+
                 let nowObjArray = _.map(this.nowIndexes, (idx) => {
                     return this.selections[idx]
                 })

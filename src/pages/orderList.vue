@@ -127,6 +127,7 @@
 //                this.endDate = date
 //                this.getList()
 //            },
+
             productChange (obj) {
 
                 this.$store.commit('updateParams', {

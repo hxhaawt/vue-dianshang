@@ -373,7 +373,7 @@
             // 监听选择银行时，返回的信息
             onChangeBanks(bankObj) {
                 this.bankId = bankObj.id;
-                console.log("bankId:", this.bankId);
+                console.log('bank: ', bankObj);
             },
             // 关闭 点击确认购买 之后显示 的窗口
             hideCheckOrder () {

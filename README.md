@@ -1,6 +1,16 @@
-# vue2xx-real-project
 
-> A Vue.js project
+# 用Vue2.xx 做的一个仿电商网站
+
+	有一级、二级和购买相关的页面，功能比较齐全。
+	可以模拟点击购买商品，选择商品的对应信息，显示提交弹窗等功能。
+
+## 网页图片
+首页
+![](https://i.imgur.com/XT0fexl.jpg)
+
+购买页
+![](https://i.imgur.com/GyvZepm.png)
+
 
 ## Build Setup
 

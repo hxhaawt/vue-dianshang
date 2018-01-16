@@ -7,7 +7,8 @@
                 :key="index"
                 :title="item.label"
                 :class="[item.name, {active: index === nowIndex}]"
-            ></li>
+            >
+            </li>
         </ul>
     </div>
 </template>

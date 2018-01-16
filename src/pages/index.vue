@@ -283,6 +283,7 @@
     .index-board-hill .index-board-item-inner{
         background: url(../assets/images/4.png) no-repeat;
     }
+    
     .index-board-item h2 {
         font-size: 18px;
         font-weight: bold;
